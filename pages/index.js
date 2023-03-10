@@ -103,6 +103,7 @@ export default function Home(props) {
             <div className="form-group">
               <label id="message">TU MENSAJE</label>
               <input 
+                autoComplete='off'
                 type="text" 
                 name="message"
                 onChange={(e) => {
@@ -126,11 +127,8 @@ export default function Home(props) {
 }
 
 const colorChange = keyframes`
-  0% {background-color: limegreen}
-  25% {background-color: magenta}
-  50% {background-color: yellow}
-  75% {background-color: cyan}
-  100% {background-color: limegreen}
+  0% {background: repeating-linear-gradient( -45deg, #ff0000, #ff0000 3px, #000000 3px, #000000 15px );}
+  100% {background: repeating-linear-gradient( 315deg, #ff0000, #ff0000 3px, #000000 3px, #000000 15px );}
 `;
 
 const StyledMain = styled.main`
@@ -144,15 +142,18 @@ const StyledMain = styled.main`
   /* background-image: url('/giphy.gif'); */
   background-size: 20rem;
   background: black;
+  background-color: #000000;
+  opacity: 1;
+  background: repeating-linear-gradient( -45deg, #ff0000, #ff0000 3px, #000000 3px, #000000 15px );
+  animation: ${colorChange} 5s infinite forwards;
   .overlay {
     width: 100vw;
     height: 100vh;
     pointer-events: none;
     position: absolute;
     z-index: 2;
-    background: ${props => props.overlayColor};
+    background: red;
     mix-blend-mode: multiply;
-    /* animation: ${colorChange} 5s infinite forwards; */
   }
   .content {
     position: relative;
@@ -184,7 +185,7 @@ const StyledMain = styled.main`
       }
       button {
         cursor: pointer;
-        background: lightgray;
+        background: white;
         color: black;
         font-family: unset;
         /* opacity: 0.7; */
