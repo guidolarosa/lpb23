@@ -146,15 +146,15 @@ const StyledMain = styled.main`
   opacity: 1;
   /* background: repeating-linear-gradient( 145deg, white, white 1px, #000000 1px, #000000 2rem ); */
   .noise-overlay {
-    width: 100vw;
+    width: 100vh;
     height: 100vw;
     pointer-events: none;
     position: absolute;
     z-index: 2;
     mix-blend-mode: screen;
-    background-size: 30%;
+    background-size: 50%;
     transform: rotate(90deg);
-    animation: ${colorChange} 1s infinite forwards linear;
+    animation: ${colorChange} 0.1s infinite forwards linear;
     background-image: url('/giphy.gif');
     background-rotation: 90deg;
   }
@@ -164,7 +164,7 @@ const StyledMain = styled.main`
     pointer-events: none;
     position: absolute;
     z-index: 4;
-    background: slateblue;
+    background: red;
     mix-blend-mode: multiply;
   }
   .content {
