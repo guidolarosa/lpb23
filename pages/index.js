@@ -141,9 +141,9 @@ const StyledMain = styled.main`
   justify-content: center;
   flex-direction: column;
   position: relative;
-  background-image: url('/giphy.gif');
+  /* background-image: url('/giphy.gif'); */
   background-size: 20rem;
-  /* background: black; */
+  background: black;
   .overlay {
     width: 100vw;
     height: 100vh;
