@@ -1,0 +1,17 @@
+{
+  "id": "message",
+  "label": "Message",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "message_content": {
+        "type": "Text",
+        "config": {
+          "label": "Message Content",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}
