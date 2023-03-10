@@ -128,8 +128,8 @@ export default function Home(props) {
 }
 
 const colorChange = keyframes`
-  0% {background: repeating-linear-gradient( -45deg, #ff0000, #ff0000 3px, #000000 3px, #000000 15px );}
-  100% {background: repeating-linear-gradient( 315deg, #ff0000, #ff0000 3px, #000000 3px, #000000 15px );}
+  0% {background-position: 0%}
+  100% {background-position: 100%}
 `;
 
 const StyledMain = styled.main`
@@ -144,17 +144,19 @@ const StyledMain = styled.main`
   background: black;
   background-color: #000000;
   opacity: 1;
-  background: repeating-linear-gradient( 90deg, #ff0000, #ff0000 1px, #000000 1px, #000000 2rem );
-  /* animation: ${colorChange} 5s infinite forwards; */
+  /* background: repeating-linear-gradient( 145deg, white, white 1px, #000000 1px, #000000 2rem ); */
   .noise-overlay {
     width: 100vw;
-    height: 100vh;
+    height: 100vw;
     pointer-events: none;
     position: absolute;
     z-index: 2;
     mix-blend-mode: screen;
     background-size: 30%;
+    transform: rotate(90deg);
+    animation: ${colorChange} 1s infinite forwards linear;
     background-image: url('/giphy.gif');
+    background-rotation: 90deg;
   }
   .overlay {
     width: 100vw;
@@ -162,7 +164,7 @@ const StyledMain = styled.main`
     pointer-events: none;
     position: absolute;
     z-index: 4;
-    background: red;
+    background: slateblue;
     mix-blend-mode: multiply;
   }
   .content {
@@ -236,6 +238,7 @@ const StyledMain = styled.main`
     background-size: cover;
     background-position: center;
     text-transform: uppercase;
+    z-index: 3;
   }
 `;
 
