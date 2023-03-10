@@ -94,6 +94,7 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <StyledMain overlayColor={color}>
+        <div className="noise-overlay"/>
         <div className="overlay"/>
         <div className="content">
           <form 
@@ -139,25 +140,34 @@ const StyledMain = styled.main`
   justify-content: center;
   flex-direction: column;
   position: relative;
-  /* background-image: url('/giphy.gif'); */
   background-size: 20rem;
   background: black;
   background-color: #000000;
   opacity: 1;
-  background: repeating-linear-gradient( -45deg, #ff0000, #ff0000 3px, #000000 3px, #000000 15px );
-  animation: ${colorChange} 5s infinite forwards;
-  .overlay {
+  background: repeating-linear-gradient( 90deg, #ff0000, #ff0000 1px, #000000 1px, #000000 2rem );
+  /* animation: ${colorChange} 5s infinite forwards; */
+  .noise-overlay {
     width: 100vw;
     height: 100vh;
     pointer-events: none;
     position: absolute;
     z-index: 2;
+    mix-blend-mode: screen;
+    background-size: 30%;
+    background-image: url('/giphy.gif');
+  }
+  .overlay {
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    position: absolute;
+    z-index: 4;
     background: red;
     mix-blend-mode: multiply;
   }
   .content {
     position: relative;
-    z-index: 1;
+    z-index: 3;
     background: black;
     padding: 2rem;
     width: 30rem;
