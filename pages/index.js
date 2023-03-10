@@ -1,6 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { createClient } from 'contentful-management'
 
@@ -16,7 +15,7 @@ export default function Home(props) {
   const sanitizeString = str => {
     str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
     return str.trim();
-}
+  }
 
   const getRandomInt = (min, max) => {
     min = Math.ceil(min);
@@ -72,9 +71,20 @@ export default function Home(props) {
     postMessage();
   };
 
-  useEffect(() => {
-    console.log(formData)
-  }, [formData])
+  const getRandomColor = () => {
+    let colors = [
+      'cyan',
+      'magenta',
+      'yellow',
+      'limegreen',
+      'dodgerblue',
+      'red'
+    ];
+
+    return colors[getRandomInt(0, colors.length)];
+  }
+
+  const color = getRandomColor();
 
   return (
     <div>
@@ -83,8 +93,7 @@ export default function Home(props) {
         <meta name="description" content="La Piba Berreta" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <StyledMain>
+      <StyledMain overlayColor={color}>
         <div className="overlay"/>
         <div className="content">
           <form 
@@ -103,7 +112,7 @@ export default function Home(props) {
                 }}
               />
             </div>
-            <button type="submit">Enviar</button>
+            <button type="submit">ENVIAR</button>
           </form>
         </div>
         <strong className="received-message">
@@ -141,9 +150,9 @@ const StyledMain = styled.main`
     pointer-events: none;
     position: absolute;
     z-index: 2;
-    background: limegreen;
+    background: ${props => props.overlayColor};
     mix-blend-mode: multiply;
-    animation: ${colorChange} 5s infinite forwards;
+    /* animation: ${colorChange} 5s infinite forwards; */
   }
   .content {
     position: relative;
