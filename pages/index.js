@@ -27,25 +27,30 @@ export default function Home(props) {
     accessToken: props.CONTENTFUL_MGM_KEY
   });
 
-  const postMessage = (message) => {
+  const postMessage = () => {
     setMessageSendState('SENDING')
-    client.getSpace(props.CONTENTFUL_SPACE_ID)
-      .then((space) => space.getEnvironment('master'))
-      .then((environment) => environment.createEntry('message', {
-        fields: {
-          messageContent: {
-            'en-US': sanitizeString(formData.message)
+    if (formData.message.length > 0) {
+      client.getSpace(props.CONTENTFUL_SPACE_ID)
+        .then((space) => space.getEnvironment('master'))
+        .then((environment) => environment.createEntry('message', {
+          fields: {
+            messageContent: {
+              'en-US': sanitizeString(formData.message)
+            }
           }
-        }
-      }))
-      .then((entry) => {
-        getRandomMessage(() => {
-          setMessageSendState('SUCCESS');
-        });
-      })
-      .catch((error) => {
-        setMessageSendState('FAIL')
-      })
+        }))
+        .then((entry) => {
+          getRandomMessage(() => {
+            setMessageSendState('SUCCESS');
+          });
+        })
+        .catch((error) => {
+          setMessageSendState('FAIL')
+        })
+      } else {
+      setMessageSendState('EMPTY');
+      setFormDisabled(false);
+    }
   };
 
   const getRandomMessage = (onComplete) => {
@@ -121,6 +126,7 @@ export default function Home(props) {
           {messageSendState == 'NOT SENT' && 'CONECTANDO CON LA INTERFAZ CUÁNTICA'}
           {messageSendState == 'SENDING' && 'RECIBIENDO MENSAJE...'}
           {messageSendState == 'SUCCESS' && receivedMessage}
+          {messageSendState == 'EMPTY' && 'ESCRIBÍ ALGO'}
         </strong>
       </StyledMain>
     </div>
