@@ -221,6 +221,11 @@ export default function Home(props) {
   )
 }
 
+const fadeUp = keyframes`
+  0% {opacity: 0; transform: translateY(2rem)};
+  100% {opacity: 1; transform: translateY(0rem)};
+`;
+
 const StyledMain = styled.main`
   display: flex;
   width: 100vw;
@@ -242,6 +247,8 @@ const StyledMain = styled.main`
     width: 30rem;
     max-width: 80vw;
     text-align: center;
+    opacity: 0;
+    animation: ${fadeUp} 0.5s forwards;
     h1 {
       /* font-style: italic; */
       font-weight: 400;
