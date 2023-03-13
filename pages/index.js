@@ -101,7 +101,12 @@ export default function Home(props) {
     if (messageSendState == 'SUCCESS') {
       setShowMessage(true);
     }
-  }, [messageSendState])
+  }, [messageSendState]);
+
+  useEffect(() => {
+    console.log('Diseño por Belén Machado')
+    console.log('Desarrollo Web por Guido La Rosa')
+  }, [])
 
   const color = getRandomColor();
 
@@ -250,6 +255,8 @@ const StyledMain = styled.main`
   background-image: url('/MAGICA INTUICION-min.png');
   background-position: center;
   opacity: 1;
+  overflow-y: auto;
+  min-height: 900px;
   @media screen and (max-width: 480px) {
     background-image: url('/mobile-min.jpg');
   }
