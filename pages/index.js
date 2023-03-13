@@ -18,7 +18,7 @@ export default function Home(props) {
   const [messageSendState, setMessageSendState] = useState('NOT SENT');
   const [formDisabled, setFormDisabled] = useState(false);
   const [receivedMessage, setReceivedMessage] = useState(undefined);
-  const [showMessage, setShowMessage] = useState(true);
+  const [showMessage, setShowMessage] = useState(false);
 
   const sanitizeString = str => {
     str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
