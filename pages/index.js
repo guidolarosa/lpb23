@@ -372,6 +372,11 @@ const StyledMain = styled.main`
     bottom: 0;
     right: 0;
     max-width: 70vw;
+    @media (max-width: 480px) {
+      width: 100vw;
+      height: 100vh;
+      max-width: unset;
+    }
   }
   .top-left {
     width: 25rem;
@@ -379,6 +384,11 @@ const StyledMain = styled.main`
     top: 0;
     left: 0;
     max-width: 20vw;
+    @media (max-width: 480px) {
+      width: 40vw;
+      height: 100vh;
+      max-width: unset;
+    }
   }
   .top-right {
     width: 25rem;
@@ -386,6 +396,11 @@ const StyledMain = styled.main`
     top: 0;
     right: 0;
     max-width: 20vw;
+    @media (max-width: 480px) {
+      width: 40vw;
+      height: 100vh;
+      max-width: unset;
+    }
   }
   .bottom-left {
     width: 20rem;
@@ -393,6 +408,12 @@ const StyledMain = styled.main`
     bottom: 0;
     left: 0;
     max-width: 20vw;
+    @media (max-width: 480px) {
+      width: 60vw;
+      height: 100vw;
+      max-width: unset;
+      left: -20vw;
+    }
   }
 `;
 
