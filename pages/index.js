@@ -111,7 +111,7 @@ export default function Home(props) {
         <title>Mágica Intuición</title>
         <meta name="description" content="Mágica Intuición" />
         <link rel="icon" href="/favicon.ico" />
-        <meta property="og:image" itemProp='image' content="/MAGICA INTUICION.png" />
+        <meta property="og:image" itemProp='image' content="https://i.ibb.co/JysHWpy/MAGICA-INTUICION.png" />
 
         <meta property="og:title" content="Mágica Intuición" />
 
