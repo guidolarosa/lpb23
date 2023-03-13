@@ -389,6 +389,9 @@ const StyledMain = styled.main`
     top: 0;
     left: 0;
     max-width: 20vw;
+    @media (max-width: 920px) {
+      max-width: 30vw;
+    }
     @media (max-width: 480px) {
       width: 40vw;
       height: 100vh;
@@ -401,6 +404,9 @@ const StyledMain = styled.main`
     top: 0;
     right: 0;
     max-width: 20vw;
+    @media (max-width: 920px) {
+      max-width: 30vw;
+    }
     @media (max-width: 480px) {
       width: 40vw;
       height: 100vh;
@@ -413,6 +419,9 @@ const StyledMain = styled.main`
     bottom: 0;
     left: 0;
     max-width: 20vw;
+    @media (max-width: 920px) {
+      max-width: 30vw;
+    }
     @media (max-width: 480px) {
       width: 60vw;
       height: 100vw;
