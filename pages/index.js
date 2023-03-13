@@ -18,7 +18,7 @@ export default function Home(props) {
   const [messageSendState, setMessageSendState] = useState('NOT SENT');
   const [formDisabled, setFormDisabled] = useState(false);
   const [receivedMessage, setReceivedMessage] = useState(undefined);
-  const [showMessage, setShowMessage] = useState(false);
+  const [showMessage, setShowMessage] = useState(true);
 
   const sanitizeString = str => {
     str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
@@ -243,9 +243,9 @@ const StyledMain = styled.main`
     max-width: 80vw;
     text-align: center;
     h1 {
-      font-style: italic;
+      /* font-style: italic; */
       font-weight: 400;
-      font-size: 3rem;
+      font-size: 2.5rem;
       letter-spacing: -0.05em;
       @media screen and (max-width: 480px) {
         font-size: 2rem;
@@ -339,6 +339,8 @@ const StyledMain = styled.main`
       pointer-events: unset;
       .received-message-card {
         top: 0rem;
+        transform: translateY(0rem) rotateX(0deg);
+        filter: blur(0);
       }
     }
     .received-message-card {
@@ -354,9 +356,15 @@ const StyledMain = styled.main`
       align-items: center;
       justify-content: center;
       position: relative;
-      transition: 0.3s ease-in-out all;
-      top: 2rem;
+      transition: 0.5s ease-in-out all;
+      transform: translateY(2rem) rotateX(90deg);
+      filter: blur(1rem);
       font-size: 2rem;
+      background-image: url('/mensaje.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 0 2rem 0.2rem rgba(0,0,0, 0.5);
       .close {
         position: absolute;
         top: 1rem;
@@ -364,6 +372,10 @@ const StyledMain = styled.main`
         z-index: 4;
         font-size: 1rem;
         cursor: pointer;
+        opacity: 0.7;
+        &:hover {
+          opacity: 1;
+        }
       }
     }
   }
