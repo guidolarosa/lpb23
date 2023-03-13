@@ -110,7 +110,7 @@ export default function Home(props) {
       <Head>
         <title>Mágica Intuición</title>
         <meta name="description" content="Mágica Intuición" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icono.png" />
         <meta property="og:image" itemProp='image' content="https://i.ibb.co/JysHWpy/MAGICA-INTUICION.png" />
 
         <meta property="og:title" content="Mágica Intuición" />
@@ -264,18 +264,15 @@ const StyledMain = styled.main`
     margin-bottom: auto;
     margin-top: 3rem;
     .gif {
-      /* position: absolute; */
       width: 30rem;
       height: 10rem;
       position: relative;
       @media screen and (max-width: 720px) {
         width: 100%;
         height: 7rem;
-        /* bottom: 2rem; */
       }
     }
     h1 {
-      /* font-style: italic; */
       font-weight: 400;
       font-size: 2.5rem;
       letter-spacing: -0.05em;
