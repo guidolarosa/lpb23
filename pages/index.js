@@ -243,6 +243,7 @@ const StyledMain = styled.main`
       font-style: italic;
       font-weight: 400;
       font-size: 3rem;
+      letter-spacing: -0.05em;
       @media screen and (max-width: 480px) {
         font-size: 2rem;
       }
