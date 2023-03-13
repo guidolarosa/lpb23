@@ -125,7 +125,19 @@ export default function Home(props) {
       </Head>
       <StyledMain overlayColor={color}>
         <div className="content">
-          <h1 className={fondamento.className}>Mágica Intuición</h1>
+          <h1 className={fondamento.className}>
+            <div className="gif">
+              <Image
+                src={'/anim.gif'}
+                fill
+                alt="Names"
+                style={{
+                  objectFit: 'contain'
+                }}
+              />
+            </div>
+            Mágica Intuición
+          </h1>
           <p>La intuición es una verdad contundente y misteriosa del campo del conocimiento estudiado por la ciencia y la filosofía.</p>
           <p>La física cuántica nos explica que hay universos paralelos y realidades paralelas que conviven y en ocasiones interactúan entre sí. Algunos científicos afirman que la intuición es una señal propia que nos autoenviamos desde otra dimensión.</p>
           <form 
@@ -254,6 +266,18 @@ const StyledMain = styled.main`
       font-weight: 400;
       font-size: 2.5rem;
       letter-spacing: -0.05em;
+      position: relative;
+      .gif {
+        position: absolute;
+        bottom: 3rem;
+        width: 30rem;
+        height: 10rem;
+        @media screen and (max-width: 480px) {
+          width: 100%;
+          height: 7rem;
+          bottom: 2rem;
+        }
+      }
       @media screen and (max-width: 480px) {
         font-size: 2rem;
       }
