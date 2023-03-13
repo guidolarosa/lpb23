@@ -233,6 +233,9 @@ const StyledMain = styled.main`
   background-image: url('/MAGICA INTUICION.png');
   background-position: center;
   opacity: 1;
+  @media screen and (max-width: 480px) {
+    background-image: url('/mobile.jpg');
+  }
   .content {
     position: relative;
     z-index: 4;
@@ -278,6 +281,7 @@ const StyledMain = styled.main`
         border: none;
         outline: none;
         font-size: 2rem;
+        letter-spacing: -0.05em;
         /* opacity: 0.7; */
       }
       .form-group {
