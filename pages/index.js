@@ -134,6 +134,7 @@ export default function Home(props) {
           >
             <div className="form-group">
               <input 
+                className={fondamento.className}
                 autoComplete='off'
                 type="text" 
                 name="message"
@@ -159,17 +160,17 @@ export default function Home(props) {
               Dejá un mensaje para vos mismx en otra realidad, en otra dimensión. Esperá unos instantes y recibirás una respuesta.
             </p>
           </div>
-          <div className={`received-message ${showMessage ? 'show' : ''} ${fondamento.className}`} onClick={() => {setShowMessage(false)}}>
-            <div className="received-message-card">
-              <span className={`${fondamento.className} close`} onClick={() => {setShowMessage(false)}}>X</span>
-              <p>
-                {receivedMessage}
-              </p>
-            </div>
-          </div>
           {/* {messageSendState == 'NOT SENT' && ''} */}
           {/* {messageSendState == 'SENDING' && ''} */}
           {/* {messageSendState == 'EMPTY' && ''} */}
+        </div>
+        <div className={`received-message ${showMessage ? 'show' : ''} ${fondamento.className}`} onClick={() => {setShowMessage(false)}}>
+          <div className="received-message-card">
+            <span className={`${fondamento.className} close`} onClick={() => {setShowMessage(false)}}>X</span>
+            <p>
+              {receivedMessage}
+            </p>
+          </div>
         </div>
         <div className="grass bg-element">
           <Image
@@ -242,9 +243,17 @@ const StyledMain = styled.main`
       font-style: italic;
       font-weight: 400;
       font-size: 3rem;
+      @media screen and (max-width: 480px) {
+        font-size: 2rem;
+      }
+    }
+    p {
+      @media (max-width: 480px) {
+        font-size: 0.8rem;
+      }
     }
     form {
-      padding: 2rem;
+      padding: 2rem 0;
       display: flex;
       flex-direction: column;
       button,
@@ -304,51 +313,52 @@ const StyledMain = styled.main`
         background: white;
       }
     }
-    .received-message {
+  }
+  .received-message {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    position: fixed;
+    background: rgba(0,0,0,0.7);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    transition: 0.3s ease-in-out all;
+    pointer-events: none;
+    &.show {
+      opacity: 1;
+      pointer-events: unset;
+      .received-message-card {
+        top: 0rem;
+      }
+    }
+    .received-message-card {
+      text-align: center;
+      font-size: 2rem;
+      max-width: 80vw;
       padding: 2rem;
+      min-height: 20rem;
+      height: 20rem;
+      width: 30rem;
+      background: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 20;
-      position: fixed;
-      background: rgba(0,0,0,0.7);
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      opacity: 0;
+      position: relative;
       transition: 0.3s ease-in-out all;
-      pointer-events: none;
-      &.show {
-        opacity: 1;
-        pointer-events: unset;
-        .received-message-card {
-          top: 0rem;
-        }
-      }
-      .received-message-card {
-        text-align: center;
-        font-size: 2rem;
-        max-width: 80vw;
-        padding: 2rem;
-        min-height: 20rem;
-        height: 20rem;
-        width: 30rem;
-        background: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        transition: 0.3s ease-in-out all;
-        top: 2rem;
-        .close {
-          position: absolute;
-          top: 1rem;
-          right: 1rem;
-          z-index: 4;
-          font-size: 1rem;
-          cursor: pointer;
-        }
+      top: 2rem;
+      font-size: 2rem;
+      .close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 4;
+        font-size: 1rem;
+        cursor: pointer;
       }
     }
   }
@@ -368,14 +378,14 @@ const StyledMain = styled.main`
     height: 25rem;
     top: 0;
     left: 0;
-    max-width: 40vw;
+    max-width: 20vw;
   }
   .top-right {
     width: 25rem;
     height: 25rem;
     top: 0;
     right: 0;
-    max-width: 40vw;
+    max-width: 20vw;
   }
   .bottom-left {
     width: 20rem;
