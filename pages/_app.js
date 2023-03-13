@@ -1,11 +1,11 @@
 import '../styles/globals.css'
-import { Space_Mono } from 'next/font/google';
+import { Lato } from 'next/font/google';
 
-const spaceMono = Space_Mono({subsets: ['latin'], weight: ['400']});
+const lato = Lato({subsets: ['latin'], weight: ['100', '300', '400', '700']});
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div className={spaceMono.className}>
+    <div className={`${lato.className}`}>
       <Component {...pageProps} />
     </div>
   )

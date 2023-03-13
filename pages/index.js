@@ -2,7 +2,14 @@ import Head from 'next/head'
 import { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { createClient } from 'contentful-management'
+import { Fondamento } from 'next/font/google';
+import Image from 'next/image';
 
+const fondamento = Fondamento({ 
+  subsets: ['latin'],
+   weight: ['400'],
+   style: ['normal', 'italic']
+});
 
 export default function Home(props) {
   const [formData, setFormData] = useState({
@@ -99,15 +106,15 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <StyledMain overlayColor={color}>
-        <div className="noise-overlay"/>
-        <div className="overlay"/>
         <div className="content">
+          <h1 className={fondamento.className}>Mágica Intuición</h1>
+          <p>La intuición es una verdad contundente y misteriosa del campo místico del conocimiento estudiado por la ciencia y la filosofía.</p>
+          <p>La física cuántica nos explica que hay universos paralelos y realidades paralelas que conviven y en ocasiones interactúan entre sí. Algunos científicos afirman que la intuición es una señal propia que nos autoenviamos desde otra dimensión.</p>
           <form 
             className={`${formDisabled ? 'disabled' : ''}`} 
             onSubmit={handleFormSubmit}
           >
             <div className="form-group">
-              <label id="message">TU MENSAJE</label>
               <input 
                 autoComplete='off'
                 type="text" 
@@ -119,24 +126,78 @@ export default function Home(props) {
                 }}
               />
             </div>
-            <button type="submit">ENVIAR</button>
+            <button 
+              className={fondamento.className}
+              type="submit"
+            >
+                enviar
+            </button>
           </form>
+          <div className="instruction">
+            <p className="overlay">
+              Dejá un mensaje para vos mismx en otra realidad, en otra dimensión. Esperá unos instantes y recibirás una respuesta.
+            </p>
+            <p className="underlay">
+              Dejá un mensaje para vos mismx en otra realidad, en otra dimensión. Esperá unos instantes y recibirás una respuesta.
+            </p>
+          </div>
+          {messageSendState == 'SUCCESS' && (
+            <strong className="received-message">
+              {receivedMessage}
+            </strong>
+          )}
+          {/* {messageSendState == 'NOT SENT' && ''} */}
+          {/* {messageSendState == 'SENDING' && ''} */}
+          {/* {messageSendState == 'EMPTY' && ''} */}
         </div>
-        <strong className="received-message">
-          {messageSendState == 'NOT SENT' && 'CONECTANDO CON LA INTERFAZ CUÁNTICA'}
-          {messageSendState == 'SENDING' && 'RECIBIENDO MENSAJE...'}
-          {messageSendState == 'SUCCESS' && receivedMessage}
-          {messageSendState == 'EMPTY' && 'ESCRIBÍ ALGO'}
-        </strong>
+        <div className="grass bg-element">
+          <Image
+            src="/grass.png"
+            fill
+            alt="Grass"
+            style={{
+              objectFit: 'contain',
+              objectPosition: 'right bottom'
+            }}
+          />
+        </div>
+        <div className="top-right bg-element">
+          <Image
+            src="/top-right.png"
+            fill
+            alt="Top Right"
+            style={{
+              objectFit: 'contain',
+              objectPosition: 'top right'
+            }}
+          />
+        </div>
+        <div className="top-left bg-element">
+          <Image
+            src="/top-left.png"
+            fill
+            alt="Top Left"
+            style={{
+              objectFit: 'contain',
+              objectPosition: 'top left'
+            }}
+          />
+        </div>
+        <div className="bottom-left bg-element">
+          <Image
+            src="/bottom-left.png"
+            fill
+            alt="Top Right"
+            style={{
+              objectFit: 'contain',
+              objectPosition: 'bottom left'
+            }}
+          />
+        </div>
       </StyledMain>
     </div>
   )
 }
-
-const colorChange = keyframes`
-  0% {background-position: 0%}
-  100% {background-position: 100%}
-`;
 
 const StyledMain = styled.main`
   display: flex;
@@ -146,45 +207,25 @@ const StyledMain = styled.main`
   justify-content: center;
   flex-direction: column;
   position: relative;
-  background-size: 20rem;
-  background: black;
-  background-color: #000000;
+  background-size: cover;
+  background-image: url('/MAGICA INTUICION.png');
+  background-position: center;
   opacity: 1;
-  /* background: repeating-linear-gradient( 145deg, white, white 1px, #000000 1px, #000000 2rem ); */
-  .noise-overlay {
-    width: 100vh;
-    height: 100vw;
-    pointer-events: none;
-    position: absolute;
-    z-index: 2;
-    mix-blend-mode: screen;
-    background-size: 50%;
-    transform: rotate(90deg);
-    animation: ${colorChange} 0.1s infinite forwards linear;
-    background-image: url('/giphy.gif');
-    background-rotation: 90deg;
-  }
-  .overlay {
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    position: absolute;
-    z-index: 4;
-    background: red;
-    mix-blend-mode: multiply;
-  }
   .content {
     position: relative;
     z-index: 3;
-    background: black;
-    padding: 2rem;
     width: 30rem;
     max-width: 80vw;
-    border: 1px solid white;
+    text-align: center;
+    h1 {
+      font-style: italic;
+      font-weight: 400;
+      font-size: 3rem;
+    }
     form {
+      padding: 2rem;
       display: flex;
       flex-direction: column;
-      color: white;
       &.disabled {
         opacity: 0.4;
         pointer-events: none;
@@ -192,24 +233,25 @@ const StyledMain = styled.main`
       button,
       input {
         height: 2rem;
-        border: 1px solid white;
         background: black;
-        color: white;
         outline: none;
-        font-family: unset;
       }
       input {
         padding: 0 1rem;
+        background: white;
+        border: none;
+        outline: none;
+        height: 3rem;
+        font-size: 1.2rem;
       }
       button {
         cursor: pointer;
-        background: white;
-        color: black;
-        font-family: unset;
+        color: #1f1f21;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 2rem;
         /* opacity: 0.7; */
-        &:hover {
-          background: white;
-        }
       }
       .form-group {
         margin-bottom: 1rem;
@@ -223,28 +265,76 @@ const StyledMain = styled.main`
         }
       }
     }
+    .instruction {
+      position: relative;
+      height: 5rem;
+      p {
+        margin: 0;
+      }
+      .overlay {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+      }
+      .underlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        color: white;
+        filter: blur(2rem);
+        background: white;
+      }
+    }
+    .received-message {
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 2rem;
+      max-width: 80vw;
+      padding: 2rem;
+      min-height: 20rem;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      text-transform: uppercase;
+      z-index: 3;
+    }
   }
-  .received-message {
-    /* margin-top: 2rem; */
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 2rem;
-    width: 30rem;
-    max-width: 80vw;
-    background: black;
-    padding: 2rem;
-    min-height: 20rem;
-    border: 1px solid white;
-    border-top: 0;
-    background-image: url('/waves.gif');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    text-transform: uppercase;
+  .bg-element {
+    position: absolute;
     z-index: 3;
+  }
+  .grass {
+    width: 40rem;
+    height: 100rem;
+    bottom: 0;
+    right: 0;
+    max-width: 70vw;
+  }
+  .top-left {
+    width: 25rem;
+    height: 25rem;
+    top: 0;
+    left: 0;
+    max-width: 40vw;
+  }
+  .top-right {
+    width: 25rem;
+    height: 25rem;
+    top: 0;
+    right: 0;
+    max-width: 40vw;
+  }
+  .bottom-left {
+    width: 20rem;
+    height: 50rem;
+    bottom: 0;
+    left: 0;
+    max-width: 20vw;
   }
 `;
 
