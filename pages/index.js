@@ -125,17 +125,17 @@ export default function Home(props) {
       </Head>
       <StyledMain overlayColor={color}>
         <div className="content">
+          <div className="gif">
+            <Image
+              src={'/anim.gif'}
+              fill
+              alt="Names"
+              style={{
+                objectFit: 'contain'
+              }}
+            />
+          </div>
           <h1 className={fondamento.className}>
-            <div className="gif">
-              <Image
-                src={'/anim.gif'}
-                fill
-                alt="Names"
-                style={{
-                  objectFit: 'contain'
-                }}
-              />
-            </div>
             Mágica Intuición
           </h1>
           <p>La intuición es una verdad contundente y misteriosa del campo del conocimiento estudiado por la ciencia y la filosofía.</p>
@@ -261,23 +261,26 @@ const StyledMain = styled.main`
     text-align: center;
     opacity: 0;
     animation: ${fadeUp} 0.5s forwards;
+    margin-bottom: auto;
+    margin-top: 3rem;
+    .gif {
+      /* position: absolute; */
+      width: 30rem;
+      height: 10rem;
+      position: relative;
+      @media screen and (max-width: 720px) {
+        width: 100%;
+        height: 7rem;
+        /* bottom: 2rem; */
+      }
+    }
     h1 {
       /* font-style: italic; */
       font-weight: 400;
       font-size: 2.5rem;
       letter-spacing: -0.05em;
       position: relative;
-      .gif {
-        position: absolute;
-        bottom: 3rem;
-        width: 30rem;
-        height: 10rem;
-        @media screen and (max-width: 480px) {
-          width: 100%;
-          height: 7rem;
-          bottom: 2rem;
-        }
-      }
+      margin-top: 0;
       @media screen and (max-width: 480px) {
         font-size: 2rem;
       }
