@@ -111,13 +111,15 @@ export default function Home(props) {
         <title>Mágica Intuición</title>
         <meta name="description" content="Mágica Intuición" />
         <link rel="icon" href="/favicon.ico" />
-        <meta property="og:image" content="/MAGICA INTUICION.png" />
+        <meta property="og:image" itemProp='image' content="/MAGICA INTUICION.png" />
 
         <meta property="og:title" content="Mágica Intuición" />
 
         <meta property="og:site_name" content="Mágica Intuición" />
 
         <meta property="og:description" content="La intuición es una verdad contundente y misteriosa del campo místico del conocimiento estudiado por la ciencia y la filosofía." />
+
+        <meta property="og:type" content="website" />
       </Head>
       <StyledMain overlayColor={color}>
         <div className="content">
