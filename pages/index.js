@@ -120,6 +120,8 @@ export default function Home(props) {
         <meta property="og:description" content="La intuición es una verdad contundente y misteriosa del campo místico del conocimiento estudiado por la ciencia y la filosofía." />
 
         <meta property="og:type" content="website" />
+
+        <meta property="og:url" content="https://www.magicaintuicion.vercel.app" />
       </Head>
       <StyledMain overlayColor={color}>
         <div className="content">
@@ -157,7 +159,7 @@ export default function Home(props) {
               Dejá un mensaje para vos mismx en otra realidad, en otra dimensión. Esperá unos instantes y recibirás una respuesta.
             </p>
           </div>
-          <div className={`received-message ${showMessage ? 'show' : ''} ${fondamento.className}`}>
+          <div className={`received-message ${showMessage ? 'show' : ''} ${fondamento.className}`} onClick={() => {setShowMessage(false)}}>
             <div className="received-message-card">
               <span className={`${fondamento.className} close`} onClick={() => {setShowMessage(false)}}>X</span>
               <p>
@@ -245,10 +247,6 @@ const StyledMain = styled.main`
       padding: 2rem;
       display: flex;
       flex-direction: column;
-      &.disabled {
-        opacity: 0.4;
-        pointer-events: none;
-      }
       button,
       input {
         height: 2rem;
