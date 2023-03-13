@@ -117,7 +117,7 @@ export default function Home(props) {
 
         <meta property="og:site_name" content="Mágica Intuición" />
 
-        <meta property="og:description" content="La intuición es una verdad contundente y misteriosa del campo místico del conocimiento estudiado por la ciencia y la filosofía." />
+        <meta property="og:description" content="La intuición es una verdad contundente y misteriosa del campo del conocimiento estudiado por la ciencia y la filosofía." />
 
         <meta property="og:type" content="website" />
 
@@ -126,7 +126,7 @@ export default function Home(props) {
       <StyledMain overlayColor={color}>
         <div className="content">
           <h1 className={fondamento.className}>Mágica Intuición</h1>
-          <p>La intuición es una verdad contundente y misteriosa del campo místico del conocimiento estudiado por la ciencia y la filosofía.</p>
+          <p>La intuición es una verdad contundente y misteriosa del campo del conocimiento estudiado por la ciencia y la filosofía.</p>
           <p>La física cuántica nos explica que hay universos paralelos y realidades paralelas que conviven y en ocasiones interactúan entre sí. Algunos científicos afirman que la intuición es una señal propia que nos autoenviamos desde otra dimensión.</p>
           <form 
             className={`${formDisabled ? 'disabled' : ''}`} 
