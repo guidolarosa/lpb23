@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { createClient } from 'contentful-management'
 import { Fondamento } from 'next/font/google';
@@ -18,6 +18,7 @@ export default function Home(props) {
   const [messageSendState, setMessageSendState] = useState('NOT SENT');
   const [formDisabled, setFormDisabled] = useState(false);
   const [receivedMessage, setReceivedMessage] = useState(undefined);
+  const [showMessage, setShowMessage] = useState(false);
 
   const sanitizeString = str => {
     str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
@@ -94,16 +95,29 @@ export default function Home(props) {
     ];
 
     return colors[getRandomInt(0, colors.length)];
-  }
+  };
+
+  useEffect(() => {
+    if (messageSendState == 'SUCCESS') {
+      setShowMessage(true);
+    }
+  }, [messageSendState])
 
   const color = getRandomColor();
 
   return (
     <div>
       <Head>
-        <title>La Piba Berreta</title>
-        <meta name="description" content="La Piba Berreta" />
+        <title>Mágica Intuición</title>
+        <meta name="description" content="Mágica Intuición" />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:image" content="/MAGICA INTUICION.png" />
+
+        <meta property="og:title" content="Mágica Intuición" />
+
+        <meta property="og:site_name" content="Mágica Intuición" />
+
+        <meta property="og:description" content="La intuición es una verdad contundente y misteriosa del campo místico del conocimiento estudiado por la ciencia y la filosofía." />
       </Head>
       <StyledMain overlayColor={color}>
         <div className="content">
@@ -141,11 +155,14 @@ export default function Home(props) {
               Dejá un mensaje para vos mismx en otra realidad, en otra dimensión. Esperá unos instantes y recibirás una respuesta.
             </p>
           </div>
-          {messageSendState == 'SUCCESS' && (
-            <strong className="received-message">
-              {receivedMessage}
-            </strong>
-          )}
+          <div className={`received-message ${showMessage ? 'show' : ''} ${fondamento.className}`}>
+            <div className="received-message-card">
+              <span className={`${fondamento.className} close`} onClick={() => {setShowMessage(false)}}>X</span>
+              <p>
+                {receivedMessage}
+              </p>
+            </div>
+          </div>
           {/* {messageSendState == 'NOT SENT' && ''} */}
           {/* {messageSendState == 'SENDING' && ''} */}
           {/* {messageSendState == 'EMPTY' && ''} */}
@@ -213,7 +230,7 @@ const StyledMain = styled.main`
   opacity: 1;
   .content {
     position: relative;
-    z-index: 3;
+    z-index: 4;
     width: 30rem;
     max-width: 80vw;
     text-align: center;
@@ -292,16 +309,47 @@ const StyledMain = styled.main`
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      font-size: 2rem;
-      max-width: 80vw;
-      padding: 2rem;
-      min-height: 20rem;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      text-transform: uppercase;
-      z-index: 3;
+      z-index: 20;
+      position: fixed;
+      background: rgba(0,0,0,0.7);
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      opacity: 0;
+      transition: 0.3s ease-in-out all;
+      pointer-events: none;
+      &.show {
+        opacity: 1;
+        pointer-events: unset;
+        .received-message-card {
+          top: 0rem;
+        }
+      }
+      .received-message-card {
+        text-align: center;
+        font-size: 2rem;
+        max-width: 80vw;
+        padding: 2rem;
+        min-height: 20rem;
+        height: 20rem;
+        width: 30rem;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        transition: 0.3s ease-in-out all;
+        top: 2rem;
+        .close {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          z-index: 4;
+          font-size: 1rem;
+          cursor: pointer;
+        }
+      }
     }
   }
   .bg-element {
