@@ -184,9 +184,11 @@ export default function Home(props) {
         <div className={`received-message ${showMessage ? 'show' : ''} ${fondamento.className}`} onClick={() => {setShowMessage(false)}}>
           <div className="received-message-card">
             <span className={`${fondamento.className} close`} onClick={() => {setShowMessage(false)}}>X</span>
-            <p>
-              {receivedMessage}
-            </p>
+            <div className="card-text">
+              <p>
+                {receivedMessage}
+              </p>
+            </div>
           </div>
         </div>
         <div className="grass bg-element">
@@ -385,9 +387,7 @@ const StyledMain = styled.main`
       text-align: center;
       font-size: 2rem;
       max-width: 80vw;
-      padding: 2rem;
       min-height: 20rem;
-      height: 20rem;
       width: 30rem;
       background: white;
       display: flex;
@@ -403,6 +403,14 @@ const StyledMain = styled.main`
       background-size: cover;
       background-position: center;
       box-shadow: 0 0 2rem 0.2rem rgba(0,0,0, 0.5);
+      overflow: hidden;
+      .card-text {
+        max-height: 90vh;
+        padding: 2rem;
+        overflow: scroll;
+        width: 100%;
+        height: 100%;
+      }
       .close {
         position: absolute;
         top: 1rem;
