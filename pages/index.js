@@ -247,11 +247,11 @@ const StyledMain = styled.main`
   flex-direction: column;
   position: relative;
   background-size: cover;
-  background-image: url('/MAGICA INTUICION.png');
+  background-image: url('/MAGICA INTUICION-min.png');
   background-position: center;
   opacity: 1;
   @media screen and (max-width: 480px) {
-    background-image: url('/mobile.jpg');
+    background-image: url('/mobile-min.jpg');
   }
   .content {
     position: relative;
@@ -391,7 +391,7 @@ const StyledMain = styled.main`
       transform: translateY(2rem) rotateX(90deg);
       filter: blur(1rem);
       font-size: 2rem;
-      background-image: url('/mensaje.jpg');
+      background-image: url('/mensaje-min.jpg');
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
